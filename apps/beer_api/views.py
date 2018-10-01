@@ -24,7 +24,3 @@ def index(request):
         'result': result,
     }
     return render(request, 'beer_api/index.html', context)
-
-    # key = {
-    #'api_key': 'MDpjN2M2ZTM3OC1jNWJhLTExZTgtYmVmOC04N2RlNWQ5ODYyMzA6V3NYUkprY2lyZ3pKb3lJak1UTHlEYWFrNHczNWpjb1BWYWFY'
-#}
