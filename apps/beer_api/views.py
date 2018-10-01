@@ -9,7 +9,18 @@ def index(request):
     response = requests.get(url)
     beers = response.json()
     print("Beers: {}".format(beers))
+    result = beers['result']
+    print("Result: {}".format(result))
+    beer_list = []
+    i = 0
+    for i in range(0, len(result)):
+        beer = result[i]
+        print("Beer: {}".format(beer))
+        beer_list.append(beer)
+        i += 1
     context = {
-        'beers': beers
+        'beer_list': beer_list,
+        'beers': beers,
+        'result': result,
     }
     return render(request, 'beer_api/index.html', context)
