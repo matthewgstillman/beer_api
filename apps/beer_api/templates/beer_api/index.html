@@ -12,11 +12,13 @@
         <h6>Producer Name: {{ beer.producer_name}}</h6>
         <h6>Origin: {{ beer.origin }}</h6>
         <h6>Product Number: {{ beer.product_no }}</h6>
+        <h6>Description: {{ beer.description }}</h6>
         <h6>ID: {{ beer.id}}</h6>
         <h6>Primary Category: {{ beer.primary_category }}</h6>
         <h6>Is OCB: {{ beer.is_ocb }}</h6>
         <h6>Package Unit: {{ beer.package_unit_type.title }}</h6>
         <h6>Beer Type: {{ beer.secondary_category }}</h6>
+        <h6>Tertiary Cat: {{ beer.secondary_category }}</h6>
         <h6>Style: {{ beer.style }}</h6>
         <h6>Serving Suggestion: {{ beer.serving_suggestion.title }}</h6>
         <h6>Last Updated: {{ beer.updated_at.title }}</h6>
@@ -27,12 +29,14 @@
         <h6>Inventory Volume in Millimeters: {{ beer.inventory_volume_in_milliliters}}</h6>
         <h6>Sugar Grams Per Liter: {{ beer.sugar_in_grams_per_liter}}</h6>
         <h6>Has Reward Bonus Miles: {{ beer.has_bonus_reward_miles }}</h6>
+        <h6>Reward Miles: {{ beer.bonus_reward_miles }}</h6>
         <h6>Inventory Count: {{ beer.inventory_count}}</h6>
+        <h6>Tags: {{ beer.tags.title }}</h6>
         <h6>Discontinued: {{ beer.is_discontinued }}</h6>
         <h6>Dead: {{ beer.is_dead }}</h6>
         <h6>Is VQA: {{ beer.is_vqa}}</h6>
         <h6>Value Added Promotion Description: {{ beer.value_added_promotion_description }}</h6>
-        <img src="{{ beer.image_thumb_uri}}" alt="{{ beer.producer_name }}">
+        <img src="{{ beer.image_thumb_url}}" alt="{{ beer.producer_name }}">
         <h6>{{ beer }}</h6>
     {% endfor %}
     <!--<h5>Beer List: {{ beer_list }}</h5>-->
