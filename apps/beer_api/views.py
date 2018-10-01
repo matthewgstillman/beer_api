@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from api_key import key
 import requests
+# import mathfilters
 # Create your views here.
 def index(request):
     url_root = 'https://lcboapi.com/products?access_key='
