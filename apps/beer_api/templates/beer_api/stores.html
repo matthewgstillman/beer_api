@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Stores</title>
+{% endblock%}
+
+
+{% block content %}
+<a href="/stores">Beer Stores</a>
+<div class="container">
+    <h1>Beer API</h1>
+    <h2>Stores</h2>
+    {% for store in store_list %}
+    {% load humanize %}
+    {% load mathfilters %}
+        <h2>{{ store.name }}</h2>
+        <h6>{{ store.address_line_1 }}, {{ store.address_line_2 }}</h6>
+        <h6>Store City: {{ store.city }}</h6>
+        <h6>Phone Number: {{ store.telephone }}</h6>
+        <h6>Fax: {{ store.fax }}</h6>
+        <h6>Store ID: {{ store.id }}</h6>
+        <h6>Store Number: {{ store.store_no }}</h6>
+        <h6>Store Latitude: {{ store.latitude }}</h6>
+        <h6>Store Longitude: {{ store.longitude }}</h6>
+        <h6>Store Tags: {{ store.tags.title }}</h6>
+        <h6>Inventory Price: ${{ store.inventory_price_in_cents|mul:.01|floatformat:2 }}</h6>
+        <h6>Inventory Count: {{ store.inventory_count }}</h6>
+        <h6>Inventory Volume in Millileters: {{ store.inventory_volume_in_milliliters }}</h6>
+        <h6>Products Count: {{ store.products_count }}</h6>
+        <h6>Monday Hours : {{ store.monday_open }} - {{ store.monday_close }}</h6>
+        <h6>Tuesday Hours : {{ store.tuesday_open }} - {{ store.tuesday_close }}</h6>
+        <h6>Wednesday Hours : {{ store.wednesday_open }} - {{ store.wednesday_close }}</h6>
+        <h6>Thursday Hours : {{ store.thursday_open }} - {{ store.thursday_close }}</h6>
+        <h6>Friday Hours : {{ store.friday_open }} - {{ store.friday_close }}</h6>
+        <h6>Saturday Hours : {{ store.saturday_open }} - {{ store.saturday_close }}</h6>
+        <h6>Sunday Hours : {{ store.sunday_open }} - {{ store.sunday_close }}</h6>
+        <h6>Postal Code: {{ store.postal_code }}</h6>
+        {% if store.has_parking != False %}
+        <h6>Has Parking: {{ store.has_parking }}</h6>
+        {% endif %}
+        {% if store.has_special_occasion_permits != False %}
+        <h6>Has Special Occasion Permits: {{ store.has_special_occasion_permits}}</h6>
+        {% endif %}
+        {% if store.is_dead != False %}
+        <h6>Is Dead: {{ store.is_dead }}</h6>
+        {% endif %}
+        {% if store.has_beer_cold_room != False %}
+        <h6>Has Cold Beer Room: {{ store.has_beer_cold_room }}</h6>
+        {% endif %}
+        {% if store.has_tasting_bar != False %}
+        <h6>Tasting Bar: {{ store.has_tasting_bar }}</h6>
+        {% endif %}
+        {% if store.has_vintages_corner != False %}
+        <h6>Has Vintages Corner: {{ store.has_vintages_corner }}</h6>
+        {% endif %}
+        {% if store.has_product_consultant != False %}
+        <h6>Has Product Consultant: {{ store.has_product_consultant }}</h6>
+        {% endif %}
+        {% if store.has_bilingual_services != False %}
+        <h6>Has Bilingual Services: {{ store.has_bilingual_services }}</h6>
+        {% endif %}
+        {% if store.has_wheelchair_accessability != False %}
+        <h6>Has Wheelchair Accessability: {{ store.has_wheelchair_accessability }}</h6>
+        {% endif %}
+        <h6>Last Updated: {{ store.updated_at }}</h6>
+        <br>
+    {% endfor %}
+    <h6>{{ store_list }}</h6>
+    <h6>{{ result }}</h6>
+    <h6>{{ stores }}</h6>
+</div>
+{% endblock %}

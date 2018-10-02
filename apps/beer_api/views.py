@@ -25,3 +25,26 @@ def index(request):
         'result': result,
     }
     return render(request, 'beer_api/index.html', context)
+
+def stores(request):
+    url_root = 'https://lcboapi.com/stores?access_key='
+    access_key = key['api_key']
+    url = str(url_root) + str(access_key)
+    response = requests.get(url)
+    stores = response.json()
+    print("Stores: {}".format(stores))
+    result = stores['result']
+    print("Result: {}".format(result))
+    store_list = []
+    i = 0
+    for i in range(0, len(result)):
+        store = result[i]
+        print("Store: {}".format(store))
+        store_list.append(store)
+        i += 1
+    context = {
+        'stores': stores,
+        'store_list': store_list,
+        'result': result,
+    }
+    return render(request, 'beer_api/stores.html', context)

@@ -6,6 +6,7 @@
 
 
 {% block content %}
+<a href="/stores">Beer Stores</a>
 <div class="container">
     <h1>Beer API</h1>
     {% for beer in beer_list %}
@@ -27,16 +28,16 @@
         <h6>Is OCB: {{ beer.is_ocb }}</h6>
         {% endif %}
         <h6>Total Package Unit: {{ beer.total_package_units }}</h6>
-        <h6>Alcohol Content: {{ beer.alcohol_content }}</h6>
+        <h6>Alcohol Content: {{ beer.alcohol_content|mul:.01|floatformat:1 }}% by Volume</h6>
         <h6>Package Unit: {{ beer.package_unit_type.title }}</h6>
         <h6>Package: {{ beer.package }}</h6>
         <h6>Beer Type: {{ beer.secondary_category }}</h6>
-        <h6>Tertiary Category: {{ beer.secondary_category }}</h6>
+        <h6>Tertiary Category: {{ beer.tertiary_category }}</h6>
         <h6>Style: {{ beer.style }}</h6>
         <h6>Varietal: {{ beer.varietal }}</h6>
-        <h6>Tasting Note: {{ beer.tasting_note }}</h6>
+        <h6>Tasting Note: {{ beer.tasting_note.title }}</h6>
         <h6>Serving Suggestion: {{ beer.serving_suggestion.title }}</h6>
-        <h6>Price In Dollars: ${{ beer.price_in_cents|mul:.001 }}</h6>
+        <h6>Price In Dollars: ${{ beer.price_in_cents|mul:.001|floatformat:2 }}</h6>
         {% if beer.sugar_content != None %}
         <h6>Sugar Content: {{ beer.sugar_content }}</h6>
         {% endif %}
@@ -46,8 +47,8 @@
         <h6>Stock Type: {{ beer.stock_type}}</h6>
         <h6>Package Unit Volume In Milimeters: {{ beer.package_unit_volume_in_milliliters }}</h6>
         <h6>Inventory Volume in Millimeters: {{ beer.inventory_volume_in_milliliters}}</h6>
-        <h6>Inventory Value In Dollars: ${{ beer.inventory_price_in_cents|mul:.001 }}</h6>
-        <h6>Price Per Liter In Cents: .{{ beer.price_per_liter_in_cents }}</h6>
+        <h6>Inventory Value: ${{ beer.inventory_price_in_cents|mul:.001|floatformat:2 }}</h6>
+        <h6>Price Per Liter: ${{ beer.price_per_liter_in_cents|mul:.001|floatformat:2 }}</h6>
         <h6>Volume In Millieters: {{ beer.volume_in_milliliters }}</h6>
         {% if beer.has_bonus_reward_miles %}
         <h6>Has Reward Bonus Miles: {{ beer.has_bonus_reward_miles }}</h6>
@@ -65,19 +66,19 @@
         <h6>Limited Time Offer Ends On: {{ beer.limited_time_offer_ends_on }}</h6>
         {% endif %}
         {% if beer.limited_time_offer_savings_in_cents != 0 %}
-        <h6>Limited Time Offer Savings In Cents: {{ beer.limited_time_offer_savings_in_cents }}</h6>
+        <h6>Limited Time Offer Savings: ${{ beer.limited_time_offer_savings_in_cents|mul:.001|floatformat:2 }}</h6>
         {% endif %}
         <h6>Inventory Count: {{ beer.inventory_count}}</h6>
         <h6>Tags: {{ beer.tags.title }}</h6>
         {% if beer.is_discontinued != False %}
         <h6>Discontinued: {{ beer.is_discontinued }}</h6>
         {% endif %}
-        <h6>Regular Price in Cents: ${{ beer.regular_price_in_cents|mul:.001 }}</h6>
+        <h6>Regular Price: ${{ beer.regular_price_in_cents|mul:.001|floatformat:2 }}</h6>
         {% if beer.is_dead != False %}
         <h6>Dead: {{ beer.is_dead }}</h6>
         {% endif %}
         {% if beer.clearance_sale_savings_in_cents != 0%}
-        <h6>Clearance Sale Savings In Cents: {{ beer.clearance_sale_savings_in_cents }}</h6>
+        <h6>Clearance Sale Savings In Dollars: ${{ beer.clearance_sale_savings_in_cents|mul:.001|floatformat:2 }}</h6>
         {% endif %}
         {% if beer.is_vqa != False %}
         <h6>Is VQA: {{ beer.is_vqa}}</h6>
