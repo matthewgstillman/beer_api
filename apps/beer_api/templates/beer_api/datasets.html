@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Datasets</title>
+{% endblock%}
+
+
+{% block content %}
+<a href="/">Go Back</a>
+<div class="container">
+    <h1>Beer API</h1>
+    <h2>Datasets </h2>
+    {% load humanize %}
+    {% load mathfilters %}
+    <h6>{{ dataset_list }}</h6>
+    <h6>{{ result }}</h6>
+</div>
+{% endblock %}

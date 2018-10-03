@@ -3,6 +3,30 @@ from api_key import key
 import requests
 # import mathfilters
 # Create your views here.
+
+def datasets(request):
+    url_root = 'https://lcboapi.com/datasets?access_key='
+    access_key = key['api_key']
+    url = str(url_root) + str(access_key)
+    response = requests.get(url)
+    datasets = response.json()
+    print("Datasets: {}".format(datasets))
+    result = datasets['result']
+    print("Result: {}".format(result))
+    dataset_list = []
+    i = 0
+    for i in range(0, len(result)):
+        data = result[i]
+        print("Data: {}".format(data))
+        dataset_list.append(data)
+        i += 1
+    # print("Dataset List: {}".format(dataset_list))
+    context = {
+        'dataset_list': dataset_list,
+        'result': result,
+    }
+    return render(request, 'beer_api/datasets.html', context)
+
 def index(request):
     url_root = 'https://lcboapi.com/products?access_key='
     access_key = key['api_key']

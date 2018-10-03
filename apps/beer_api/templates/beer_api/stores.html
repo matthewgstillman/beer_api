@@ -6,7 +6,8 @@
 
 
 {% block content %}
-<a href="/stores">Beer Stores</a>
+<a href="/">Go Back</a>
+<a href="/datasets">Datasets</a>
 <div class="container">
     <h1>Beer API</h1>
     <h2>Stores</h2>
@@ -65,8 +66,5 @@
         <h6>Last Updated: {{ store.updated_at }}</h6>
         <br>
     {% endfor %}
-    <h6>{{ store_list }}</h6>
-    <h6>{{ result }}</h6>
-    <h6>{{ stores }}</h6>
 </div>
 {% endblock %}
