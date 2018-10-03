@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Inventories</title>
+{% endblock%}
+
+
+{% block content %}
+<a href="/">Go Back</a>
+<div class="container">
+    <h1>Beer API</h1>
+    <h2> Beer Inventories</h2>
+    {% load humanize %}
+    {% load mathfilters %}
+    {% for inventory in inventory_list %}
+    <h2>{{ beer.name}}</h2>
+        <img src="{{ beer.image_thumb_url}}" alt="{{ beer.producer_name }}">
+        <br>
+        <br>
+        {% load humanize %}
+        {% load mathfilters %}
+        <h6>Producer Name: {{ inventory.producer_name}}</h6>
+        <h6>Origin: {{ inventory.origin }}</h6>
+        <h6>Product Number: {{ inventory.product_no }}</h6>
+        {% if inventory.description != None %}
+        <h6>Description: {{ inventory.description }}</h6>
+        {% endif %}
+        <h6>ID: {{ inventory.id}}</h6>
+        <h6>Primary Category: {{ inventory.primary_category }}</h6>
+        {% if inventory.is_ocb != False %}
+        <h6>Is OCB: {{ inventory.is_ocb }}</h6>
+        {% endif %}
+        <h6>Total Package Unit: {{ inventory.total_package_units }}</h6>
+        <h6>Alcohol Content: {{ inventory.alcohol_content|mul:.01|floatformat:1 }}% by Volume</h6>
+        <h6>Package Unit: {{ inventory.package_unit_type.title }}</h6>
+        <h6>Package: {{ inventory.package }}</h6>
+        <h6>Beer Type: {{ inventory.secondary_category }}</h6>
+        <h6>Tertiary Category: {{ inventory.tertiary_category }}</h6>
+        <h6>Style: {{ inventory.style }}</h6>
+        <h6>Varietal: {{ inventory.varietal }}</h6>
+        <h6>Tasting Note: {{ inventory.tasting_note.title }}</h6>
+        <h6>Serving Suggestion: {{ inventory.serving_suggestion.title }}</h6>
+        <h6>Price In Dollars: ${{ inventory.price_in_cents|mul:.001|floatformat:2 }}</h6>
+        {% if inventory.sugar_content != None %}
+        <h6>Sugar Content: {{ inventory.sugar_content }}</h6>
+        {% endif %}
+        {% if inventory.sugar_in_grams_per_liter != None %}
+        <h6>Sugar Grams Per Liter: {{ inventory.sugar_in_grams_per_liter }}</h6>
+        {% endif %}
+        <h6>Stock Type: {{ inventory.stock_type}}</h6>
+        <h6>Package Unit Volume In Milimeters: {{ inventory.package_unit_volume_in_milliliters }}</h6>
+        <h6>Inventory Volume in Millimeters: {{ inventory.inventory_volume_in_milliliters}}</h6>
+        <h6>Inventory Value: ${{ inventory.inventory_price_in_cents|mul:.001|floatformat:2 }}</h6>
+        <h6>Price Per Liter: ${{ inventory.price_per_liter_in_cents|mul:.001|floatformat:2 }}</h6>
+        <h6>Volume In Millieters: {{ inventory.volume_in_milliliters }}</h6>
+        {% if beer.has_bonus_reward_miles %}
+        <h6>Has Reward Bonus Miles: {{ inventory.has_bonus_reward_miles }}</h6>
+        {% endif %}
+        {% if inventory.bonus_reward_miles_ends_on != None %}
+        <h6>Bonus Miles End On: {{ inventory.bonus_reward_miles_ends_on }}</h6>
+        {% endif %}
+        {% if inventory.bonus_reward_miles != 0%}
+        <h6>Reward Miles: {{ inventory.bonus_reward_miles }}</h6>
+        {% endif %}
+        {% if inventory.has_limited_time_offer != False %}
+        <h6>Has Limited Time Offer: {{ inventory.has_limited_time_offer}}</h6>
+        {% endif %}
+        {% if inventory.limited_time_offer_ends_on != None %}
+        <h6>Limited Time Offer Ends On: {{ inventory.limited_time_offer_ends_on }}</h6>
+        {% endif %}
+        {% if inventory.limited_time_offer_savings_in_cents != 0 %}
+        <h6>Limited Time Offer Savings: ${{ inventory.limited_time_offer_savings_in_cents|mul:.001|floatformat:2 }}</h6>
+        {% endif %}
+        <h6>Inventory Count: {{ inventory.inventory_count}}</h6>
+        <h6>Tags: {{ inventory.tags.title }}</h6>
+        {% if inventory.is_discontinued != False %}
+        <h6>Discontinued: {{ inventory.is_discontinued }}</h6>
+        {% endif %}
+        <h6>Regular Price: ${{ inventory.regular_price_in_cents|mul:.001|floatformat:2 }}</h6>
+        {% if inventory.is_dead != False %}
+        <h6>Dead: {{ inventory.is_dead }}</h6>
+        {% endif %}
+        {% if inventory.clearance_sale_savings_in_cents != 0%}
+        <h6>Clearance Sale Savings In Dollars: ${{ inventory.clearance_sale_savings_in_cents|mul:.001|floatformat:2 }}</h6>
+        {% endif %}
+        {% if inventory.is_vqa != False %}
+        <h6>Is VQA: {{ inventory.is_vqa}}</h6>
+        {% endif %}
+        {% if inventory.is_kosher != False %}
+        <h6>Is Kosher: {{ inventory.is_kosher }}</h6>
+        {% endif %}
+        {% if inventory.is_seasonal != False %}
+        <h6>Is Seasonal: {{ inventory.is_seasonal }}</h6>
+        {% endif %}
+        {% if inventory.has_clearance_sale != False %}
+        <h6>Has Clearance Sale: {{ inventory.has_clearance_sale }}</h6>
+        {% endif %}
+        <h6>Released On: {{ inventory.released_on }}</h6>
+        {% if inventory.has_value_added_promotion != None %}
+        <h6>Has Value Added Promotion: {{ inventory.has_value_added_promotion }}</h6>
+        {% endif %}
+        <h6>Value Added Promotion Description: {{ inventory.value_added_promotion_description }}</h6>
+        <a href="{{ inventory.image_url }}">Image Url</a>
+        <h6>Last Updated: {{ inventory.updated_at.title }}</h6>
+        <br>
+    {% endfor %}
+</div>
+{% endblock %}
